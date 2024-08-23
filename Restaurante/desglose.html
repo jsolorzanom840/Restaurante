@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald´s</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // jQuery para manejar el menú responsive
+            $('nav ul li a').click(function(){
+                $('nav ul li a').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Funcionalidad para el botón de "Pasar a cajas"
+            $('#submitButton').click(function(event){
+                event.preventDefault();
+                window.location.href = 'desglose.php'; // Redirigir a la página PHP
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Imagenes/Logo.png" alt="Logo del Restaurante">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="ordenar.html">Ordenar</a></li>
+                <li><a href="desglose.html">Desglose</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h1>Desglose de lo consumido</h1>
+        <p>Nuestro restaurante, con su atmósfera elegante y acogedora, es el escenario perfecto para descubrir una explosión de texturas y aromas que lo dejarán maravillado. Utilizando los ingredientes más frescos y de temporada, nuestros platos son una sinfonía de colores y sabores que rinden homenaje a la tradición culinaria local.</p>
+    </section>
+
+    <section id="reservations">
+        <h2>Desglose del pedido</h2>
+        <form method="POST" action="PHP/desglose.php">
+            <table id="desglose-table"> 
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Mesa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los datos se cargarán aquí desde el PHP -->
+                </tbody>
+            </table>
+            <button id="desgloses" type="button">Desglosar</button>
+        </form>
+    </section>
+   
+    <section id="contact">
+        <h2>Contacto</h2>
+        <p>Dirección: ULACIT, Barrio Tournon</p>
+        <p>Teléfono: (+506) 8313-1759</p>
+        <p>Email: jsolorzanom840@ulacit.ed.cr</p>
+        <p> Gracias por su eleccion </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Restaurante. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="JS/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Vincular el botón para desencadenar el llamado GET
+            document.getElementById("desgloses").addEventListener("click", function() {
+                // Hacer la solicitud GET al servidor PHP
+                fetch('PHP/desglose.php')
+                    .then(response => response.json()) // Convertir la respuesta a JSON
+                    .then(data => {
+                        // Obtener el tbody de la tabla
+                        const tbody = document.querySelector("#desglose-table tbody");
+    
+                        // Limpiar el contenido existente del tbody
+                        tbody.innerHTML = '';
+    
+                        // Recorrer los datos recibidos y añadir filas a la tabla
+                        data.forEach(item => {
+                            const row = document.createElement('tr');
+    
+                            const nombreCell = document.createElement('td');
+                            nombreCell.textContent = item.nombre;
+    
+                            const descripcionCell = document.createElement('td');
+                            descripcionCell.textContent = item.descripcion;
+    
+                            const mesaCell = document.createElement('td');
+                            mesaCell.textContent = item.mesa;
+    
+                            row.appendChild(nombreCell);
+                            row.appendChild(descripcionCell);
+                            row.appendChild(mesaCell);
+    
+                            tbody.appendChild(row);
+                        });
+                    })
+                    .catch(error => console.error('Error al obtener los datos:', error));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+    <section id="registrar">
+        <h2>Registrar</h2>
+        <form action="PHP/registrar.php" method="post">
+            <label for="nombre_usuario">Nombre de usuario:</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" required>
+        
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
+        
+            <input type="submit" value="Registrar">
+        </form>
+
+        <div class="login-button-container">
+            <p>¿Ya tienes una cuenta?</p>
+            <button id="loginButton">Iniciar Sesión</button>
+        </div>
+    </section>
+    
+    <script>
+        $(document).ready(function() {
+            $('#loginButton').click(function() {
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Restaurante. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

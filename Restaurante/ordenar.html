@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald´s</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Imagenes/Logo.png" alt="Logo del Restaurante">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="ordenar.html">Ordenar</a></li>
+                <li><a href="desglose.html">Desglose</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h1>Bienvenido a nuestra pestaña para ordenar</h1>
+        <p>Ya sea que esté buscando una cena formal o una reunión informal con amigos, McDonald´s lo invita a vivir una velada mágica, donde cada platillo es una obra maestra y cada sorbo es un viaje a través de los sentidos. Déjese cautivar por nuestra pasión por la excelencia y prepárese para una experiencia gastronómica que recordará por mucho tiempo..</p>
+    </section>
+
+    <section id="menu">
+        <h2>Menú</h2>
+        <div class="menu-items">
+            <img src="Imagenes/MenuMac.jpeg" alt="Menu">
+        </div>
+    </section>
+
+    <section id="orders">
+        <h2>Ordenar</h2>
+        <form method="POST" action="PHP/ordenar.php">
+            <label for="name">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        
+            <label for="order">Descripcion:</label>
+            <input type="text" id="descripcion" name="descripcion" required>
+        
+            <label for="table">Mesa:</label>
+            <input type="number" id="Mesa" name="Mesa" required>
+        
+            <label for="user">Usuario:</label>
+            <input type="number" id="id_usuarios" name="id_usuarios" required>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contacto</h2>
+        <p>Dirección: ULACIT, Barrio Tournon</p>
+        <p>Teléfono: (+506) 8313-1759</p>
+        <p>Email: jsolorzanom840@ulacit.ed.cr</p>
+        <p> Gracias por su eleccion </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Restaurante. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
